@@ -238,3 +238,62 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* --- BambooCraft additions --- */
+
+@utility grad-bamboo {
+  background-image: linear-gradient(135deg, var(--bamboo) 0%, var(--leaf) 100%);
+}
+
+@utility grad-warm {
+  background-image: linear-gradient(180deg, var(--background) 0%, var(--beige) 100%);
+}
+
+@utility card-lift {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after,
+  &[data-status="active"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
