@@ -5,9 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Scandinavian Nature design system.
- * Warm ivory, sand, walnut, sage and muted gold. Editorial typography.
+ * BambooCraft design system.
+ * Bamboo green, fresh leaf, warm cream, bamboo beige, earth brown, muted gold.
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 12px);
@@ -38,56 +39,68 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --color-bamboo: var(--bamboo);
+  --color-leaf: var(--leaf);
+  --color-beige: var(--beige);
+  --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-ui: "Inter", system-ui, sans-serif;
-  --shadow-soft: 0 2px 8px oklch(0.42 0.04 70 / 0.05), 0 18px 40px -24px oklch(0.42 0.04 70 / 0.22);
-  --shadow-lift: 0 4px 12px oklch(0.42 0.04 70 / 0.07), 0 34px 60px -30px oklch(0.42 0.04 70 / 0.3);
+  --shadow-soft: 0 2px 8px oklch(0.42 0.05 140 / 0.06), 0 18px 40px -24px oklch(0.42 0.05 140 / 0.22);
+  --shadow-lift: 0 4px 12px oklch(0.42 0.05 140 / 0.08), 0 34px 60px -30px oklch(0.42 0.05 140 / 0.3);
+
 }
 
 :root {
-  --radius: 1.5rem;
-  --background: oklch(0.976 0.008 95);
-  --foreground: oklch(0.34 0 0);
-  --card: oklch(0.993 0.005 95);
-  --card-foreground: oklch(0.34 0 0);
-  --popover: oklch(0.993 0.005 95);
-  --popover-foreground: oklch(0.34 0 0);
-  --primary: oklch(0.52 0.055 60);
-  --primary-foreground: oklch(0.98 0.008 95);
-  --secondary: oklch(0.949 0.013 90);
-  --secondary-foreground: oklch(0.34 0 0);
-  --muted: oklch(0.949 0.013 90);
-  --muted-foreground: oklch(0.58 0.008 80);
-  --accent: oklch(0.74 0.035 130);
-  --accent-foreground: oklch(0.29 0.02 130);
-  --gold: oklch(0.73 0.075 82);
-  --clay: oklch(0.66 0.09 45);
+  --radius: 1.25rem;
+  --background: oklch(0.982 0.014 85);
+  --foreground: oklch(0.31 0.012 140);
+  --card: oklch(0.995 0.006 90);
+  --card-foreground: oklch(0.31 0.012 140);
+  --popover: oklch(0.995 0.006 90);
+  --popover-foreground: oklch(0.31 0.012 140);
+  --primary: oklch(0.51 0.084 143);
+  --primary-foreground: oklch(0.985 0.014 85);
+  --secondary: oklch(0.938 0.031 82);
+  --secondary-foreground: oklch(0.34 0.02 140);
+  --muted: oklch(0.945 0.022 84);
+  --muted-foreground: oklch(0.53 0.02 120);
+  --accent: oklch(0.71 0.106 141);
+  --accent-foreground: oklch(0.24 0.03 143);
+  --gold: oklch(0.76 0.115 82);
+  --clay: oklch(0.48 0.072 55);
+  --bamboo: oklch(0.51 0.084 143);
+  --leaf: oklch(0.71 0.106 141);
+  --beige: oklch(0.916 0.038 80);
   --destructive: oklch(0.55 0.16 27);
   --destructive-foreground: oklch(0.98 0.008 95);
-  --border: oklch(0.9 0.015 85);
-  --input: oklch(0.9 0.015 85);
-  --ring: oklch(0.74 0.035 130);
+  --border: oklch(0.895 0.024 84);
+  --input: oklch(0.895 0.024 84);
+  --ring: oklch(0.51 0.084 143);
 }
 
 .dark {
-  --background: oklch(0.22 0.012 70);
-  --foreground: oklch(0.95 0.008 90);
-  --card: oklch(0.26 0.014 70);
-  --card-foreground: oklch(0.95 0.008 90);
-  --popover: oklch(0.26 0.014 70);
-  --popover-foreground: oklch(0.95 0.008 90);
-  --primary: oklch(0.7 0.06 62);
-  --primary-foreground: oklch(0.2 0.012 70);
-  --secondary: oklch(0.3 0.014 70);
-  --secondary-foreground: oklch(0.95 0.008 90);
-  --muted: oklch(0.3 0.014 70);
-  --muted-foreground: oklch(0.72 0.01 80);
-  --accent: oklch(0.66 0.04 130);
-  --accent-foreground: oklch(0.2 0.012 70);
+  --background: oklch(0.21 0.02 145);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.25 0.024 145);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.25 0.024 145);
+  --popover-foreground: oklch(0.95 0.012 85);
+  --primary: oklch(0.71 0.106 141);
+  --primary-foreground: oklch(0.19 0.02 145);
+  --secondary: oklch(0.29 0.024 145);
+  --secondary-foreground: oklch(0.95 0.012 85);
+  --muted: oklch(0.29 0.024 145);
+  --muted-foreground: oklch(0.73 0.018 100);
+  --accent: oklch(0.66 0.1 141);
+  --accent-foreground: oklch(0.19 0.02 145);
+  --gold: oklch(0.78 0.11 82);
+  --clay: oklch(0.62 0.075 55);
+  --bamboo: oklch(0.6 0.1 143);
+  --leaf: oklch(0.71 0.106 141);
+  --beige: oklch(0.35 0.03 84);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.66 0.04 130);
+  --ring: oklch(0.66 0.1 141);
 }
 
 @layer base {
@@ -111,9 +124,10 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 300;
-    letter-spacing: -0.01em;
+    font-weight: 400;
+    letter-spacing: -0.015em;
   }
+
 
   ::selection {
     background: var(--accent);
@@ -223,4 +237,63 @@
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* --- BambooCraft additions --- */
+
+@utility grad-bamboo {
+  background-image: linear-gradient(135deg, var(--bamboo) 0%, var(--leaf) 100%);
+}
+
+@utility grad-warm {
+  background-image: linear-gradient(180deg, var(--background) 0%, var(--beige) 100%);
+}
+
+@utility card-lift {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after,
+  &[data-status="active"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility float-soft {
+  animation: float-soft 6s ease-in-out infinite;
 }

@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Heart, Menu, ShoppingBag, User2, X } from "lucide-react";
+import { useShop } from "@/lib/shop-store";
 
 const links = [
-  { label: "Collections", href: "#collections" },
-  { label: "Artisans", href: "#artisans" },
-  { label: "Journal", href: "#journal" },
-  { label: "About", href: "#why" },
-  { label: "Contact", href: "#newsletter" },
-];
+  { to: "/", label: "Home" },
+  { to: "/shop", label: "Shop" },
+  { to: "/collections", label: "Collections" },
+  { to: "/artisans", label: "Artisans" },
+  { to: "/sustainability", label: "Sustainability" },
+  { to: "/about", label: "Our Story" },
+  { to: "/contact", label: "Contact" },
+] as const;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { cartCount, wishlist, user, openCart, openAuth } = useShop();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -22,84 +30,107 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border/70 bg-background/70 backdrop-blur-xl"
-          : "border-b border-transparent"
+          ? "border-b border-border/70 bg-background/85 backdrop-blur-xl shadow-soft"
+          : "bg-transparent"
       }`}
     >
-      <nav
-        aria-label="Primary"
-        className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-5 py-5 sm:px-8"
-      >
-        <a href="#top" className="flex min-w-0 items-center gap-2">
-          <span className="font-display text-2xl tracking-tight">Terra&nbsp;&amp;&nbsp;Thread</span>
-        </a>
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
+        <Link to="/" className="flex items-center gap-2.5">
+          <span className="grad-bamboo flex h-9 w-9 items-center justify-center rounded-xl text-primary-foreground">
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <path d="M9 3v18M15 3v18M9 8h6M9 14h6" strokeLinecap="round" />
+            </svg>
+          </span>
+          <span className="font-display text-xl tracking-tight">
+            Bamboo<span className="text-primary">Craft</span>
+          </span>
+        </Link>
 
-        <ul className="hidden items-center justify-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                className="font-ui relative text-[0.78rem] uppercase tracking-[0.16em] text-muted-foreground transition-colors duration-500 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-500 hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100"
-              >
-                {l.label}
-              </a>
-            </li>
+            <Link
+              key={l.to}
+              to={l.to}
+              activeOptions={{ exact: l.to === "/" }}
+              className="link-underline font-ui text-[0.8rem] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground"
+            >
+              {l.label}
+            </Link>
           ))}
-        </ul>
+        </nav>
 
-        <div className="flex items-center justify-end gap-1.5">
-          <button
-            aria-label="Search"
-            className="hidden h-10 items-center gap-2 rounded-full border border-border px-4 text-sm text-muted-foreground transition-colors duration-500 hover:bg-secondary sm:flex"
+        <div className="flex items-center gap-1">
+          <Link
+            to="/wishlist"
+            aria-label="Wishlist"
+            className="relative rounded-full p-2.5 transition-colors hover:bg-secondary"
           >
-            <Search className="h-4 w-4" strokeWidth={1.3} />
-            <span className="font-ui text-xs tracking-wide">Search</span>
-          </button>
+            <Heart className="h-[1.15rem] w-[1.15rem]" />
+            {wishlist.length > 0 && (
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 font-ui text-[0.6rem] text-primary-foreground">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
           <button
-            aria-label="Account"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full transition-colors duration-500 hover:bg-secondary"
-          >
-            <User className="h-[1.15rem] w-[1.15rem]" strokeWidth={1.3} />
-          </button>
-          <button
+            onClick={openCart}
             aria-label="Cart"
-            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full transition-colors duration-500 hover:bg-secondary"
+            className="relative rounded-full p-2.5 transition-colors hover:bg-secondary"
           >
-            <ShoppingBag className="h-[1.15rem] w-[1.15rem]" strokeWidth={1.3} />
-            <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-gold" />
-          </button>
-          <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full transition-colors duration-500 hover:bg-secondary lg:hidden"
-          >
-            {open ? (
-              <X className="h-5 w-5" strokeWidth={1.3} />
-            ) : (
-              <Menu className="h-5 w-5" strokeWidth={1.3} />
+            <ShoppingBag className="h-[1.15rem] w-[1.15rem]" />
+            {cartCount > 0 && (
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 font-ui text-[0.6rem] text-primary-foreground">
+                {cartCount}
+              </span>
             )}
           </button>
+          {user ? (
+            <Link
+              to="/account"
+              aria-label="Account"
+              className="rounded-full p-2.5 transition-colors hover:bg-secondary"
+            >
+              <User2 className="h-[1.15rem] w-[1.15rem]" />
+            </Link>
+          ) : (
+            <button
+              onClick={openAuth}
+              className="btn-pill btn-solid ml-1 hidden !px-5 !py-2.5 sm:inline-flex"
+            >
+              Sign in
+            </button>
+          )}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            className="rounded-full p-2.5 transition-colors hover:bg-secondary lg:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-      </nav>
+      </div>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
-          <ul className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-6 sm:px-8">
+        <div className="border-t border-border bg-background/97 backdrop-blur-xl lg:hidden">
+          <nav className="mx-auto grid max-w-7xl gap-1 px-5 py-4">
             {links.map((l) => (
-              <li key={l.label}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="font-display block py-2 text-2xl"
-                >
-                  {l.label}
-                </a>
-              </li>
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: l.to === "/" }}
+                className="rounded-xl px-3 py-3 font-ui text-sm uppercase tracking-[0.14em] text-muted-foreground hover:bg-secondary data-[status=active]:text-foreground"
+              >
+                {l.label}
+              </Link>
             ))}
-          </ul>
+            {!user && (
+              <button onClick={openAuth} className="btn-pill btn-solid mt-2">
+                Sign in
+              </button>
+            )}
+          </nav>
         </div>
       )}
     </header>
