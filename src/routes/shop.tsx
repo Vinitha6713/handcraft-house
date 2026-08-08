@@ -13,13 +13,13 @@ export const Route = createFileRoute("/shop")({
   }),
   head: () => ({
     meta: [
-      { title: "Shop Bamboo Lamps, Furniture & Décor — BambooCraft" },
+      { title: "Shop Bamboo Lamps, Furniture & Décor — The Handicraft House" },
       {
         name: "description",
         content:
           "Browse handcrafted bamboo lighting, kitchenware, storage, furniture and gifts. Filter by room and price.",
       },
-      { property: "og:title", content: "Shop Handcrafted Bamboo — BambooCraft" },
+      { property: "og:title", content: "Shop Handcrafted Bamboo — The Handicraft House" },
       {
         property: "og:description",
         content: "Handmade bamboo lighting, furniture, storage and gifts from independent artisans.",

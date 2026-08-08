@@ -181,7 +181,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 152,
     badge: "Gift ready",
-    artisan: "BambooCraft Studio",
+    artisan: "The Handicraft House Studio",
     origin: "Curated",
     story:
       "Packed by hand with a note card naming every maker whose work is inside.",

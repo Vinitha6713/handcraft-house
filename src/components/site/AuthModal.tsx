@@ -70,7 +70,7 @@ export function AuthModal() {
           <X className="h-4 w-4" />
         </button>
 
-        <p className="eyebrow">BambooCraft account</p>
+        <p className="eyebrow">The Handicraft House account</p>
         <h2 className="mt-2 font-display text-3xl">
           {mode === "signin" ? "Welcome back" : "Join the studio"}
         </h2>
@@ -126,7 +126,7 @@ export function AuthModal() {
         </form>
 
         <p className="mt-5 text-center text-sm text-muted-foreground">
-          {mode === "signin" ? "New to BambooCraft?" : "Already have an account?"}{" "}
+          {mode === "signin" ? "New to The Handicraft House?" : "Already have an account?"}{" "}
           <button
             onClick={() => {
               setMode(mode === "signin" ? "signup" : "signin");

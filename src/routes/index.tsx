@@ -10,13 +10,13 @@ import { categories, products } from "@/data/products";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BambooCraft — Premium Handcrafted Bamboo Living" },
+      { title: "The Handicraft House — Premium Handcrafted Bamboo Living" },
       {
         name: "description",
         content:
           "Luxury bamboo lamps, furniture, kitchenware and décor, handwoven by independent artisans. Sustainable, plastic-free, made to last.",
       },
-      { property: "og:title", content: "BambooCraft — Premium Handcrafted Bamboo Living" },
+      { property: "og:title", content: "The Handicraft House — Premium Handcrafted Bamboo Living" },
       {
         property: "og:description",
         content:

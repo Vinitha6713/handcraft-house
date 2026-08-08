@@ -43,8 +43,8 @@ export function Navbar() {
               <path d="M9 3v18M15 3v18M9 8h6M9 14h6" strokeLinecap="round" />
             </svg>
           </span>
-          <span className="font-display text-xl tracking-tight">
-            Bamboo<span className="text-primary">Craft</span>
+          <span className="font-brand text-[1.35rem] leading-none tracking-tight md:text-[1.5rem]">
+            The Handicraft <span className="text-primary not-italic">House</span>
           </span>
         </Link>
 

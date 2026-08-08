@@ -36,14 +36,14 @@ const makers = [
 export const Route = createFileRoute("/artisans")({
   head: () => ({
     meta: [
-      { title: "Meet the Artisans — BambooCraft" },
+      { title: "Meet the Artisans — The Handicraft House" },
       {
         name: "description",
         content:
-          "The 42 artisan families behind BambooCraft: weavers, benders and carvers across India, Japan, Indonesia and Vietnam.",
+          "The 42 artisan families behind The Handicraft House: weavers, benders and carvers across India, Japan, Indonesia and Vietnam.",
       },
-      { property: "og:title", content: "Meet the Artisans — BambooCraft" },
-      { property: "og:description", content: "The makers behind every BambooCraft piece." },
+      { property: "og:title", content: "Meet the Artisans — The Handicraft House" },
+      { property: "og:description", content: "The makers behind every Handicraft House piece." },
     ],
   }),
   component: Artisans,

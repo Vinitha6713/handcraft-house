@@ -5,13 +5,13 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/sustainability")({
   head: () => ({
     meta: [
-      { title: "Sustainability & Impact — BambooCraft" },
+      { title: "Sustainability & Impact — The Handicraft House" },
       {
         name: "description",
         content:
           "Why bamboo: 5-year maturity, 35% more CO₂ absorbed, zero replanting, plastic-free packaging and carbon-neutral delivery.",
       },
-      { property: "og:title", content: "Sustainability & Impact — BambooCraft" },
+      { property: "og:title", content: "Sustainability & Impact — The Handicraft House" },
       { property: "og:description", content: "Our impact numbers, in plain language." },
     ],
   }),

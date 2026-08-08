@@ -6,13 +6,13 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact BambooCraft — Call, WhatsApp or Email" },
+      { title: "Contact The Handicraft House — Call, WhatsApp or Email" },
       {
         name: "description",
         content:
-          "Talk to the BambooCraft studio: phone, WhatsApp, email, or send us a message. We reply within one working day.",
+          "Talk to The Handicraft House studio: phone, WhatsApp, email, or send us a message. We reply within one working day.",
       },
-      { property: "og:title", content: "Contact BambooCraft" },
+      { property: "og:title", content: "Contact The Handicraft House" },
       { property: "og:description", content: "Call, WhatsApp or email the studio — we reply within a day." },
     ],
   }),
@@ -53,7 +53,7 @@ function Contact() {
           </a>
 
           <a
-            href="https://wa.me/919876543210?text=Hi%20BambooCraft"
+            href="https://wa.me/919876543210?text=Hi%20The%20Handicraft%20House"
             target="_blank"
             rel="noreferrer"
             className="card-lift flex items-center gap-4 rounded-3xl border border-border bg-card p-6"

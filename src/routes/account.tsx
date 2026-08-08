@@ -5,10 +5,10 @@ import { useShop } from "@/lib/shop-store";
 export const Route = createFileRoute("/account")({
   head: () => ({
     meta: [
-      { title: "Your Account — BambooCraft" },
-      { name: "description", content: "Manage your BambooCraft account, cart and saved pieces." },
-      { property: "og:title", content: "Your Account — BambooCraft" },
-      { property: "og:description", content: "Manage your BambooCraft account." },
+      { title: "Your Account — The Handicraft House" },
+      { name: "description", content: "Manage your Handicraft House account, cart and saved pieces." },
+      { property: "og:title", content: "Your Account — The Handicraft House" },
+      { property: "og:description", content: "Manage your Handicraft House account." },
       { name: "robots", content: "noindex" },
     ],
   }),

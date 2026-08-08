@@ -5,13 +5,13 @@ import { categories, products } from "@/data/products";
 export const Route = createFileRoute("/collections")({
   head: () => ({
     meta: [
-      { title: "Bamboo Collections by Room — BambooCraft" },
+      { title: "Bamboo Collections by Room — The Handicraft House" },
       {
         name: "description",
         content:
-          "Explore BambooCraft collections: lighting, kitchen and dining, storage, furniture, office, décor and gifting.",
+          "Explore The Handicraft House collections: lighting, kitchen and dining, storage, furniture, office, décor and gifting.",
       },
-      { property: "og:title", content: "Bamboo Collections by Room — BambooCraft" },
+      { property: "og:title", content: "Bamboo Collections by Room — The Handicraft House" },
       { property: "og:description", content: "Seven handcrafted bamboo collections, one for every room." },
     ],
   }),

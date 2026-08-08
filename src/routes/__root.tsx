@@ -75,13 +75,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BambooCraft — Premium Handcrafted Bamboo" },
+      { title: "The Handicraft House — Premium Handcrafted Bamboo" },
       {
         name: "description",
         content:
           "Handcrafted bamboo lighting, furniture, storage and gifts made by independent artisans.",
       },
-      { name: "author", content: "BambooCraft" },
+      { name: "author", content: "The Handicraft House" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@300;400;500;600&family=Inter:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@300;400;500;600&family=Inter:wght@400;500&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -108,6 +108,13 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Hide Lovable watermark/badge early — does not affect app logic */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              '#lovable-badge,[id*="lovable-badge"],div[data-lovable-badge]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;}',
+          }}
+        />
       </head>
       <body>
         {children}

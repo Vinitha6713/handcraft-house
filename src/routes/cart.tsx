@@ -8,9 +8,9 @@ import { useShop } from "@/lib/shop-store";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your Cart — BambooCraft" },
+      { title: "Your Cart — The Handicraft House" },
       { name: "description", content: "Review your handcrafted bamboo pieces and check out." },
-      { property: "og:title", content: "Your Cart — BambooCraft" },
+      { property: "og:title", content: "Your Cart — The Handicraft House" },
       { property: "og:description", content: "Review your bamboo pieces and check out." },
       { name: "robots", content: "noindex" },
     ],

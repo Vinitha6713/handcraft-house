@@ -5,13 +5,13 @@ import hero from "@/assets/bamboo-hero.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Our Story — BambooCraft" },
+      { title: "Our Story — The Handicraft House" },
       {
         name: "description",
         content:
-          "How BambooCraft began: one workshop in Assam, a stubborn belief in slow making, and a material that grows back.",
+          "How The Handicraft House began: one workshop in Assam, a stubborn belief in slow making, and a material that grows back.",
       },
-      { property: "og:title", content: "Our Story — BambooCraft" },
+      { property: "og:title", content: "Our Story — The Handicraft House" },
       { property: "og:description", content: "A studio built on slow making and a material that grows back." },
     ],
   }),
@@ -38,7 +38,7 @@ function About() {
           years later that workshop still makes our Hoshi lamp — the same pattern, the same nine hours.
         </p>
         <p>
-          BambooCraft exists to give those workshops a shopfront that matches the quality of their
+          The Handicraft House exists to give those workshops a shopfront that matches the quality of their
           work. We buy directly, we pay the asking price, and we never ask a maker to work faster.
         </p>
         <p>

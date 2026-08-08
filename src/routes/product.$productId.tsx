@@ -14,14 +14,14 @@ export const Route = createFileRoute("/product/$productId")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Product not found — BambooCraft" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Product not found — The Handicraft House" }, { name: "robots", content: "noindex" }] };
     }
     const p = loaderData.product;
     return {
       meta: [
-        { title: `${p.name} — BambooCraft` },
+        { title: `${p.name} — The Handicraft House` },
         { name: "description", content: p.tagline },
-        { property: "og:title", content: `${p.name} — BambooCraft` },
+        { property: "og:title", content: `${p.name} — The Handicraft House` },
         { property: "og:description", content: p.tagline },
       ],
     };

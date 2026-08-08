@@ -12,8 +12,8 @@ export function Footer() {
                 <path d="M9 3v18M15 3v18M9 8h6M9 14h6" strokeLinecap="round" />
               </svg>
             </span>
-            <span className="font-display text-xl">
-              Bamboo<span className="text-primary">Craft</span>
+            <span className="font-brand text-[1.35rem] leading-none tracking-tight">
+              The Handicraft <span className="text-primary not-italic">House</span>
             </span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -66,7 +66,7 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 font-ui text-xs text-muted-foreground md:flex-row md:items-center md:justify-between md:px-8">
-          <p>© {new Date().getFullYear()} BambooCraft. Grown, cut and woven by hand.</p>
+          <p>© {new Date().getFullYear()} The Handicraft House. Grown, cut and woven by hand.</p>
           <p>Plastic-free packaging · Carbon-neutral delivery</p>
         </div>
       </div>
