@@ -8,8 +8,8 @@ type Search = { category?: CategoryId | "all"; sort?: "featured" | "low" | "high
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (search: Record<string, unknown>): Search => ({
-    category: (search.category as Search["category"]) || "all",
-    sort: (search.sort as Search["sort"]) || "featured",
+    category: (search['category'] as Search['category']) || "all",
+    sort: (search['sort'] as Search['sort']) || "featured",
   }),
   head: () => ({
     meta: [

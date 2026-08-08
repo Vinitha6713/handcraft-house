@@ -127,7 +127,7 @@ function ProductPage() {
             <div>
               <dt className="eyebrow">Details</dt>
               <dd className="mt-2 space-y-1 text-muted-foreground">
-                {product.details.map((d) => (
+                {product.details.map((d: string) => (
                   <p key={d}>· {d}</p>
                 ))}
               </dd>
