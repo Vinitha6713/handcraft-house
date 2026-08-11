@@ -4,14 +4,18 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ShopProvider } from "@/lib/shop-store";
+import { AdminAuthProvider } from "@/lib/admin/auth";
+import { AdminStoreProvider } from "@/lib/admin/store";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { CartDrawer } from "@/components/site/CartDrawer";
@@ -126,22 +130,33 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ShopProvider>
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">
-            {/* Required: nested routes render here. */}
+      <AdminAuthProvider>
+        {isAdmin ? (
+          <AdminStoreProvider>
             <Outlet />
-          </main>
-          <Footer />
-        </div>
-        <CartDrawer />
-        <AuthModal />
-        <FloatingContact />
-      </ShopProvider>
+            <Toaster richColors position="top-right" />
+          </AdminStoreProvider>
+        ) : (
+          <ShopProvider>
+            <div className="flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1">
+                {/* Required: nested routes render here. */}
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
+            <CartDrawer />
+            <AuthModal />
+            <FloatingContact />
+          </ShopProvider>
+        )}
+      </AdminAuthProvider>
     </QueryClientProvider>
   );
 }
