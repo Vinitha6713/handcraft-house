@@ -1,9 +1,16 @@
-import { Navigate, Outlet, createFileRoute, useRouterState } from "@tanstack/react-router";
+import { Navigate, Outlet, createFileRoute, redirect, useRouterState } from "@tanstack/react-router";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { useAdminAuth } from "@/lib/admin/auth";
 import { AdminSkeleton } from "@/components/admin/AdminUi";
 
 export const Route = createFileRoute("/admin")({
+  beforeLoad: ({ location }) => {
+    // `/admin` and `/admin/` should open login (hosted deep-links)
+    const path = location.pathname.replace(/\/$/, "") || "/";
+    if (path === "/admin") {
+      throw redirect({ to: "/admin/login" });
+    }
+  },
   component: AdminLayout,
 });
 
