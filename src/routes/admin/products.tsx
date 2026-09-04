@@ -335,15 +335,52 @@ function ProductForm({
 
           <section className="space-y-3 rounded-2xl border border-[var(--admin-border)] bg-white p-4">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--admin-muted)]">Images</h3>
-            <p className="text-xs text-[var(--admin-muted)]">Paste an image URL (upload can be wired to storage later).</p>
+            <p className="text-xs text-[var(--admin-muted)]">
+              Upload product images from your device. You can select one or more files.
+            </p>
             <input
               className="admin-input"
-              placeholder="https://..."
-              value={form.images[0] ?? ""}
-              onChange={(e) => set("images", e.target.value ? [e.target.value] : [])}
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={(e) => {
+                const files = Array.from(e.target.files ?? []);
+                if (!files.length) return;
+                Promise.all(
+                  files.map(
+                    (file) =>
+                      new Promise<string>((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(String(reader.result ?? ""));
+                        reader.onerror = () => reject(reader.error);
+                        reader.readAsDataURL(file);
+                      }),
+                  ),
+                )
+                  .then((uploaded) => {
+                    const next = uploaded.filter(Boolean);
+                    set("images", next.length ? next : form.images);
+                    toast.success(next.length > 1 ? "Images uploaded" : "Image uploaded");
+                  })
+                  .catch(() => toast.error("Failed to read image file"));
+                e.target.value = "";
+              }}
             />
-            {form.images[0] ? (
-              <img src={form.images[0]} alt="" className="h-28 w-28 rounded-xl object-cover" />
+            {form.images.length ? (
+              <div className="flex flex-wrap gap-3">
+                {form.images.map((src, index) => (
+                  <div key={`${index}-${src.slice(0, 24)}`} className="relative">
+                    <img src={src} alt="" className="h-28 w-28 rounded-xl object-cover" />
+                    <button
+                      type="button"
+                      className="absolute -right-2 -top-2 rounded-full bg-rose-600 px-2 py-0.5 text-[10px] font-semibold text-white"
+                      onClick={() => set("images", form.images.filter((_, i) => i !== index))}
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
             ) : null}
           </section>
 
